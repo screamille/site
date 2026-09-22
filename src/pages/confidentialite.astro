@@ -1,0 +1,27 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../config";
+---
+<Base title="Politique de confidentialité" noindex>
+  <section>
+    <div class="wrap narrow legal">
+      <h1>Politique de confidentialité</h1>
+      <p><em>Modèle à compléter : les passages <span class="todo">surlignés</span> sont à adapter à tes outils.</em></p>
+
+      <h2>Données collectées</h2>
+      <p>Prénom et adresse e-mail (inscription au guide gratuit ou achat), et les informations nécessaires à la facturation. Le paiement est traité par <span class="todo">prestataire de paiement</span> ; aucune donnée bancaire n'est stockée par nos soins.</p>
+
+      <h2>Pourquoi</h2>
+      <p>Envoyer le guide gratuit et les e-mails auxquels vous vous êtes inscrit, donner accès à la formation, gérer la facturation.</p>
+
+      <h2>Outils utilisés</h2>
+      <p>Envoi des e-mails : <span class="todo">outil e-mailing</span>. Hébergement : <span class="todo">hébergeur</span>. Mesure d'audience : <span class="todo">outil ou « aucune »</span>.</p>
+
+      <h2>Durée de conservation</h2>
+      <p>Jusqu'à votre désinscription pour les e-mails ; durée légale pour les données de facturation.</p>
+
+      <h2>Vos droits</h2>
+      <p>Vous pouvez accéder à vos données, les corriger ou les supprimer en écrivant à <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Vous pouvez aussi saisir la CNIL (cnil.fr).</p>
+    </div>
+  </section>
+</Base>

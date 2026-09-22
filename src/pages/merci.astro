@@ -1,0 +1,14 @@
+---
+import Base from "../layouts/Base.astro";
+import { OFFRE } from "../config";
+---
+<Base title="Merci !" noindex>
+  <section>
+    <div class="wrap narrow center">
+      <h1>C'est envoyé ! 🎉</h1>
+      <p class="lead">Vérifiez votre boîte mail (et le dossier « Promotions » ou « Spam » au cas où).</p>
+      <p>Envie d'aller plus loin tout de suite ? Découvrez la formation complète {OFFRE.nomFormation}.</p>
+      <a href="/#prix" class="btn">Voir la formation</a>
+    </div>
+  </section>
+</Base>
