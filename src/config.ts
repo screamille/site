@@ -6,7 +6,7 @@ export const SITE = {
   // Nom provisoire : change-le ici, il se met à jour partout
   nom: "Atelier Site IA",
   url: "https://www.exemple.fr", // ton futur nom de domaine
-  auteur: "Rafael",
+  auteur: "Sandro",
   email: "contact@exemple.fr",
   accroche: "Créez le site qui vous amène des clients — avec l'IA, sans savoir coder",
   description:
