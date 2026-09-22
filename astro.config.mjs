@@ -1,6 +1,9 @@
 import { defineConfig } from "astro/config";
 
+// GitHub Pages : le site est servi sous https://screamille.github.io/site/
+// Si tu passes sur Vercel ou un vrai domaine : mets base: "/" et site: "https://ton-domaine.fr"
 export default defineConfig({
-  site: "https://www.exemple.fr", // remplace par ton domaine (même valeur que SITE.url dans src/config.ts)
+  site: "https://screamille.github.io",
+  base: "/site",
   build: { inlineStylesheets: "always" },
 });

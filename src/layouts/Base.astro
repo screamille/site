@@ -1,5 +1,5 @@
 ---
-import { SITE } from "../config";
+import { SITE , BASE } from "../config";
 interface Props { title?: string; description?: string; noindex?: boolean }
 const { title, description = SITE.description, noindex = false } = Astro.props;
 const fullTitle = title ? `${title} | ${SITE.nom}` : `${SITE.nom} — ${SITE.accroche}`;
@@ -17,15 +17,15 @@ const year = new Date().getFullYear();
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href={`${BASE}/favicon.svg`} type="image/svg+xml" />
 </head>
 <body>
   <header class="top">
     <div class="wrap top-in">
-      <a href="/" class="logo"><span class="logo-mark">✦</span> {SITE.nom}</a>
+      <a href={`${BASE}/`} class="logo"><span class="logo-mark">✦</span> {SITE.nom}</a>
       <nav>
-        <a href="/gratuit">Cadeau gratuit</a>
-        <a href="/#prix" class="btn btn-sm">Rejoindre</a>
+        <a href={`${BASE}/gratuit`}>Cadeau gratuit</a>
+        <a href={`${BASE}/#prix`} class="btn btn-sm">Rejoindre</a>
       </nav>
     </div>
   </header>
@@ -34,9 +34,9 @@ const year = new Date().getFullYear();
     <div class="wrap foot-in">
       <p>© {year} {SITE.nom}</p>
       <nav>
-        <a href="/mentions-legales">Mentions légales</a>
-        <a href="/cgv">CGV</a>
-        <a href="/confidentialite">Confidentialité</a>
+        <a href={`${BASE}/mentions-legales`}>Mentions légales</a>
+        <a href={`${BASE}/cgv`}>CGV</a>
+        <a href={`${BASE}/confidentialite`}>Confidentialité</a>
         <a href={`mailto:${SITE.email}`}>Contact</a>
       </nav>
     </div>

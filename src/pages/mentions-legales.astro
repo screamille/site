@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import { SITE } from "../config";
+import { SITE , BASE } from "../config";
 ---
 <Base title="Mentions légales" noindex>
   <section>
@@ -24,7 +24,7 @@ import { SITE } from "../config";
       <p>L'ensemble des contenus de ce site (textes, vidéos, images, supports de formation) est protégé. Toute reproduction sans autorisation écrite est interdite.</p>
 
       <h2>Données personnelles</h2>
-      <p>Voir la <a href="/confidentialite">politique de confidentialité</a>.</p>
+      <p>Voir la <a href={`${BASE}/confidentialite`}>politique de confidentialité</a>.</p>
     </div>
   </section>
 </Base>

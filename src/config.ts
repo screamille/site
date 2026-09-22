@@ -102,3 +102,6 @@ export const FAQ = [
     r: "Vous êtes remboursé sur simple e-mail pendant la durée de la garantie, sans justification.",
   },
 ];
+
+// Préfixe des liens (ex. "/site" sur GitHub Pages, "" sur Vercel ou un vrai domaine)
+export const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");

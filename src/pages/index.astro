@@ -1,7 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import OptIn from "../components/OptIn.astro";
-import { SITE, OFFRE, MODULES, FAQ } from "../config";
+import { SITE, OFFRE, MODULES, FAQ , BASE } from "../config";
 const prix = OFFRE.prevente ? OFFRE.prixLancement : OFFRE.prixNormal;
 ---
 <Base>
@@ -14,7 +14,7 @@ const prix = OFFRE.prevente ? OFFRE.prixLancement : OFFRE.prixNormal;
         <p class="lead">Je vous montre pas à pas comment créer, mettre en ligne et faire connaître votre site avec Claude — la méthode exacte que j'utilise pour mon propre site.</p>
         <div class="cta-row">
           <a href="#prix" class="btn">Je veux mon site — {prix} €</a>
-          <a href="/gratuit" class="btn btn-ghost">Commencer gratuitement</a>
+          <a href={`${BASE}/gratuit`} class="btn btn-ghost">Commencer gratuitement</a>
         </div>
         <p class="note">✓ Aucune connaissance technique &nbsp; ✓ Outils gratuits pour démarrer &nbsp; ✓ Garantie {OFFRE.garantieJours} jours</p>
       </div>
