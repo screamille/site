@@ -1,0 +1,227 @@
+---
+import Base from "../layouts/Base.astro";
+import OptIn from "../components/OptIn.astro";
+import { SITE, OFFRE, MODULES, FAQ } from "../config";
+const prix = OFFRE.prevente ? OFFRE.prixLancement : OFFRE.prixNormal;
+---
+<Base>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <p class="eyebrow">Formation pour artisans, commerçants et indépendants</p>
+        <h1>Votre site qui vous amène des clients.<br /><span class="hl">Fait avec l'IA, sans coder.</span></h1>
+        <p class="lead">Je vous montre pas à pas comment créer, mettre en ligne et faire connaître votre site avec Claude — la méthode exacte que j'utilise pour mon propre site.</p>
+        <div class="cta-row">
+          <a href="#prix" class="btn">Je veux mon site — {prix} €</a>
+          <a href="/gratuit" class="btn btn-ghost">Commencer gratuitement</a>
+        </div>
+        <p class="note">✓ Aucune connaissance technique &nbsp; ✓ Outils gratuits pour démarrer &nbsp; ✓ Garantie {OFFRE.garantieJours} jours</p>
+      </div>
+      <div class="mock" aria-hidden="true">
+        <div class="mock-bar"><i></i><i></i><i></i><span>votre-metier.fr</span></div>
+        <div class="mock-body">
+          <div class="chat me">Crée la page d'accueil de mon entreprise de plomberie à Nantes, avec un bouton pour appeler.</div>
+          <div class="chat ai">Voici une page avec vos services, votre zone d'intervention et un bouton « Appeler maintenant »…</div>
+          <div class="mock-page">
+            <b></b><b class="s"></b><b class="s"></b><em>Appeler maintenant</em>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLÈME -->
+  <section class="alt">
+    <div class="wrap narrow">
+      <h2>Vous savez qu'il vous faut un site. Mais…</h2>
+      <ul class="pains">
+        <li>Une agence vous demande <strong>1 500 à 5 000 €</strong>, plus un abonnement chaque mois.</li>
+        <li>Les créateurs de site « faciles » donnent un résultat qui ressemble à tous les autres — et <strong>personne ne le trouve sur Google</strong>.</li>
+        <li>Vous avez essayé de demander à ChatGPT ou Claude, mais vous ne savez pas <strong>par où commencer</strong> ni comment le mettre en ligne.</li>
+      </ul>
+      <p class="lead">Bonne nouvelle : en 2026, l'IA peut écrire le code à votre place. Il vous manque seulement <strong>la méthode</strong> pour la guider.</p>
+    </div>
+  </section>
+
+  <!-- MÉTHODE -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow center">La méthode</p>
+      <h2 class="center">3 étapes, un week-end pour la première version</h2>
+      <div class="steps">
+        <div class="card"><span class="num">1</span><h3>Construire</h3><p>Vous décrivez votre activité, Claude génère votre site. Vous ajustez textes et couleurs en lui parlant.</p></div>
+        <div class="card"><span class="num">2</span><h3>Publier</h3><p>Mise en ligne gratuite, votre nom de domaine, un formulaire de contact et les mentions légales.</p></div>
+        <div class="card"><span class="num">3</span><h3>Être trouvé</h3><p>Google Search Console, fiche Google locale et des agents IA qui vous aident à publier régulièrement.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POUR QUI -->
+  <section class="alt">
+    <div class="wrap two">
+      <div class="card yes">
+        <h3>C'est pour vous si…</h3>
+        <ul>
+          <li>Vous êtes artisan, commerçant, coach, thérapeute, indépendant</li>
+          <li>Vous voulez un site à vous, sans dépendre d'une agence</li>
+          <li>Vous voulez des clients qui vous trouvent sur Google</li>
+          <li>Vous pouvez y consacrer quelques heures</li>
+        </ul>
+      </div>
+      <div class="card no">
+        <h3>Ce n'est pas pour vous si…</h3>
+        <ul>
+          <li>Vous cherchez un site e-commerce avec des centaines de produits</li>
+          <li>Vous voulez devenir développeur professionnel</li>
+          <li>Vous voulez un résultat sans rien faire vous-même</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMME -->
+  <section>
+    <div class="wrap narrow">
+      <p class="eyebrow">Le programme</p>
+      <h2>{OFFRE.nomFormation} : {MODULES.length} modules vidéo</h2>
+      <div class="modules">
+        {MODULES.map((m, i) => (
+          <details class="card mod" open={i === 0}>
+            <summary><span class="mnum">Module {i + 1}</span><span class="mtitle">{m.titre}</span><span class="mdur">{m.duree}</span></summary>
+            <ul>{m.points.map((p) => <li>{p}</li>)}</ul>
+          </details>
+        ))}
+      </div>
+      <p class="bonus">🎁 <strong>Inclus :</strong> ma bibliothèque de prompts prêts à copier, les modèles de mentions légales et une checklist de mise en ligne.</p>
+    </div>
+  </section>
+
+  <!-- QUI SUIS-JE -->
+  <section class="alt">
+    <div class="wrap two about">
+      <div class="photo" aria-label="Photo à ajouter">Ta photo ici</div>
+      <div>
+        <p class="eyebrow">Qui suis-je ?</p>
+        <h2>Moi, c'est {SITE.auteur}.</h2>
+        <p>Je ne suis pas développeur. Je suis indépendant, comme vous, et j'ai créé mon propre site en me faisant aider par l'IA : structure, textes, mise en ligne, référencement.</p>
+        <p>Aujourd'hui, des agents IA m'aident à suivre mon référencement et à préparer mes contenus chaque semaine. Cette formation, c'est tout ce que j'aurais aimé savoir au début — sans le jargon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES : à ajouter quand tu auras de vrais retours d'élèves (jamais de faux avis). -->
+
+  <!-- PRIX -->
+  <section id="prix">
+    <div class="wrap narrow center">
+      {OFFRE.prevente && <p class="eyebrow">Prévente — prix de lancement pour les {OFFRE.placesLancement} premiers</p>}
+      <h2>Rejoignez {OFFRE.nomFormation}</h2>
+      <div class="card price">
+        <div class="amount">
+          {OFFRE.prevente && <s>{OFFRE.prixNormal} €</s>}
+          <strong>{prix} €</strong>
+          <span>paiement unique · accès à vie</span>
+        </div>
+        <ul>
+          <li>{MODULES.length} modules vidéo pas à pas</li>
+          <li>Bibliothèque de prompts + modèles</li>
+          <li>Mises à jour incluses</li>
+          <li>Questions par e-mail pendant la prévente</li>
+        </ul>
+        <a href={OFFRE.lienPaiement} class="btn btn-big">Je rejoins la formation</a>
+        <p class="guarantee">🛡️ <strong>Garantie {OFFRE.garantieJours} jours :</strong> si ce n'est pas pour vous, un e-mail suffit pour être remboursé.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="alt">
+    <div class="wrap narrow">
+      <h2>Questions fréquentes</h2>
+      {FAQ.map((f) => (
+        <details class="faq"><summary>{f.q}</summary><p>{f.r}</p></details>
+      ))}
+    </div>
+  </section>
+
+  <!-- DERNIER APPEL -->
+  <section>
+    <div class="wrap two last">
+      <div>
+        <h2>Pas encore prêt ? Commencez gratuitement.</h2>
+        <p class="lead">Recevez mes 20 prompts pour créer votre page d'accueil avec Claude dès ce soir.</p>
+      </div>
+      <OptIn />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding-top: 56px; }
+  .hero-in { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+  .hl { color: var(--accent); }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 14px; }
+  .note { color: var(--muted); font-size: .92rem; }
+
+  .mock { background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 24px 60px -20px rgba(23,33,43,.25); overflow: hidden; }
+  .mock-bar { display: flex; gap: 6px; align-items: center; padding: 10px 14px; background: #f1eee8; }
+  .mock-bar i { width: 10px; height: 10px; border-radius: 50%; background: #d9d4ca; }
+  .mock-bar span { margin-left: 10px; font-size: .8rem; color: var(--muted); background: #fff; padding: 2px 10px; border-radius: 6px; }
+  .mock-body { padding: 18px; display: grid; gap: 10px; font-size: .9rem; }
+  .chat { padding: 10px 14px; border-radius: 12px; max-width: 88%; }
+  .chat.me { background: var(--ink); color: #fff; justify-self: end; }
+  .chat.ai { background: var(--soft); }
+  .mock-page { border: 1px dashed var(--line); border-radius: 10px; padding: 14px; display: grid; gap: 8px; }
+  .mock-page b { height: 14px; background: #e9e5dd; border-radius: 4px; width: 70%; }
+  .mock-page b.s { height: 8px; width: 90%; }
+  .mock-page em { font-style: normal; justify-self: start; background: var(--accent); color: #fff; font-weight: 700; font-size: .8rem; padding: 6px 12px; border-radius: 999px; margin-top: 4px; }
+
+  .pains { padding-left: 1.2em; margin: 0 0 1.4em; }
+  .pains li { margin-bottom: .7em; }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
+  .num { display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--soft); color: var(--accent-dark); font-weight: 800; margin-bottom: 12px; }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+  .yes ul, .no ul { padding-left: 1.2em; margin: 0; }
+  .yes li::marker { content: "✓  "; color: #2f8f4e; }
+  .no li::marker { content: "✗  "; color: #b33a3a; }
+  .yes li, .no li { margin-bottom: .5em; }
+
+  .modules { display: grid; gap: 12px; margin-top: 24px; }
+  .mod { padding: 0; }
+  .mod summary { display: flex; gap: 14px; align-items: baseline; padding: 18px 22px; cursor: pointer; list-style: none; }
+  .mod summary::-webkit-details-marker { display: none; }
+  .mnum { font-size: .8rem; font-weight: 700; color: var(--accent-dark); white-space: nowrap; }
+  .mtitle { font-weight: 700; flex: 1; }
+  .mdur { color: var(--muted); font-size: .88rem; white-space: nowrap; }
+  .mod ul { margin: 0; padding: 0 22px 18px 2.6em; }
+  .bonus { margin-top: 24px; background: var(--soft); padding: 16px 20px; border-radius: var(--radius); }
+
+  .about { align-items: center; grid-template-columns: 280px 1fr; }
+  .photo { aspect-ratio: 1; border-radius: 50%; background: #ece7de; display: grid; place-items: center; color: var(--muted); font-weight: 600; }
+
+  .price { margin-top: 24px; text-align: left; padding: 32px; border: 2px solid var(--accent); }
+  .amount { text-align: center; margin-bottom: 20px; }
+  .amount s { color: var(--muted); font-size: 1.3rem; margin-right: 10px; }
+  .amount strong { font-size: 3.2rem; }
+  .amount span { display: block; color: var(--muted); font-size: .92rem; }
+  .price ul { padding-left: 1.2em; margin: 0 0 24px; }
+  .price li::marker { content: "✓  "; color: var(--accent); }
+  .btn-big { display: block; text-align: center; font-size: 1.15rem; padding: 18px; }
+  .guarantee { font-size: .92rem; color: var(--muted); margin: 16px 0 0; text-align: center; }
+
+  .faq { border-bottom: 1px solid var(--line); padding: 16px 0; }
+  .faq summary { font-weight: 700; cursor: pointer; }
+  .faq p { margin: 10px 0 0; color: var(--muted); }
+
+  .last { align-items: center; }
+
+  @media (max-width: 860px) {
+    .hero-in, .two, .about { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .photo { max-width: 200px; }
+    .mock { order: 2; }
+  }
+</style>

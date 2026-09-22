@@ -1,0 +1,29 @@
+---
+import Base from "../layouts/Base.astro";
+import OptIn from "../components/OptIn.astro";
+import { CADEAU } from "../config";
+---
+<Base title={CADEAU.titre} description={CADEAU.sousTitre}>
+  <section>
+    <div class="wrap g">
+      <div>
+        <p class="eyebrow">Guide gratuit</p>
+        <h1>{CADEAU.titre}</h1>
+        <p class="lead">{CADEAU.sousTitre}</p>
+        <ul class="list">
+          <li>Les prompts pour faire générer la structure de votre site</li>
+          <li>Les prompts pour écrire des textes qui donnent envie d'appeler</li>
+          <li>Les prompts pour préparer votre référencement Google</li>
+        </ul>
+      </div>
+      <div class="card"><OptIn bouton="Envoyez-moi les 20 prompts" /></div>
+    </div>
+  </section>
+</Base>
+<style>
+  .g { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; min-height: 60vh; }
+  .list { padding-left: 1.2em; }
+  .list li { margin-bottom: .5em; }
+  .list li::marker { content: "✓  "; color: var(--accent); }
+  @media (max-width: 860px) { .g { grid-template-columns: 1fr; } }
+</style>
