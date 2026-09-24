@@ -1,0 +1,39 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE, OFFRE, MODULES } from "../config";
+---
+<Base title={`Accès à ${OFFRE.nomFormation}`} noindex>
+  <section>
+    <div class="wrap narrow">
+      <p class="eyebrow">Bienvenue</p>
+      <h1>{OFFRE.nomFormation}</h1>
+      <p class="lead">Voici les {MODULES.length} modules. Ils sont publiés au fur et à mesure de la prévente — revenez régulièrement.</p>
+
+      <div class="modules">
+        {MODULES.map((m, i) => (
+          <details class="card mod" open={i === 0}>
+            <summary><span class="mnum">Module {i + 1}</span><span class="mtitle">{m.titre}</span><span class="mdur">{m.duree}</span></summary>
+            <ul>{m.points.map((p) => <li>{p}</li>)}</ul>
+            <p class="a-venir">🎬 Vidéo en cours de tournage — disponible prochainement. Vous serez prévenu par e-mail.</p>
+          </details>
+        ))}
+      </div>
+
+      <p class="bonus">🎁 <strong>Inclus :</strong> ma bibliothèque de prompts prêts à copier, les modèles de mentions légales et une checklist de mise en ligne (à venir également).</p>
+      <p class="muted">Une question en attendant ? Écrivez à <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .modules { display: grid; gap: 12px; margin-top: 24px; }
+  .mod { padding: 0; }
+  .mod summary { display: flex; gap: 14px; align-items: baseline; padding: 18px 22px; cursor: pointer; list-style: none; }
+  .mod summary::-webkit-details-marker { display: none; }
+  .mnum { font-size: .8rem; font-weight: 700; color: var(--accent-dark); white-space: nowrap; }
+  .mtitle { font-weight: 700; flex: 1; }
+  .mdur { color: var(--muted); font-size: .88rem; white-space: nowrap; }
+  .mod ul { margin: 0; padding: 0 22px 0 2.6em; }
+  .a-venir { margin: 0; padding: 10px 22px 18px 22px; color: var(--muted); font-size: .9rem; }
+  .muted { color: var(--muted); }
+</style>
