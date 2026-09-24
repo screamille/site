@@ -1,20 +1,34 @@
 ---
-import { EMAIL_FORM_ACTION, CADEAU } from "../config";
+import { EMAIL_FORM_ACTION, CADEAU, BASE } from "../config";
 interface Props { bouton?: string }
 const { bouton = "Recevoir le guide gratuit" } = Astro.props;
+// Tant qu'aucun outil e-mail réel n'est branché (EMAIL_FORM_ACTION encore en placeholder "#..."),
+// on simule l'envoi côté client pour éviter une erreur 405 sur GitHub Pages.
+const modeTest = EMAIL_FORM_ACTION.startsWith("#");
 ---
-<form class="optin" method="post" action={EMAIL_FORM_ACTION}>
+<form class="optin" method="post" action={modeTest ? undefined : EMAIL_FORM_ACTION} id="optin-form">
   <label class="sr" for="prenom">Prénom</label>
   <input id="prenom" name="first_name" type="text" placeholder="Votre prénom" autocomplete="given-name" />
   <label class="sr" for="email">E-mail</label>
   <input id="email" name="email" type="email" placeholder="Votre e-mail" required autocomplete="email" />
   <button class="btn" type="submit">{bouton}</button>
   <p class="small">« {CADEAU.titre} » envoyé immédiatement. Pas de spam, désinscription en un clic.</p>
+  {modeTest && <p class="small test-note">🧪 Mode test — aucun e-mail n'est réellement envoyé (l'outil e-mail n'est pas encore branché).</p>}
 </form>
+
+{modeTest && (
+  <script define:vars={{ base: BASE }}>
+    document.getElementById("optin-form")?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      window.location.href = `${base}/merci/`;
+    });
+  </script>
+)}
 
 <style>
   .optin { display: grid; gap: 10px; max-width: 460px; }
   .optin .btn { width: 100%; }
   .small { font-size: .85rem; color: var(--muted); margin: 0; }
+  .test-note { color: #a16b00; }
   .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 </style>
