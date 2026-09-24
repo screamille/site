@@ -99,14 +99,11 @@ const prix = OFFRE.prevente ? OFFRE.prixLancement : OFFRE.prixNormal;
 
   <!-- QUI SUIS-JE -->
   <section class="alt">
-    <div class="wrap two about">
-      <div class="photo" aria-label="Photo à ajouter">Ta photo ici</div>
-      <div>
-        <p class="eyebrow">Qui suis-je ?</p>
-        <h2>Moi, c'est {SITE.auteur}.</h2>
-        <p>Je ne suis pas développeur. Je suis indépendant, comme vous, et j'ai créé mon propre site en me faisant aider par l'IA : structure, textes, mise en ligne, référencement.</p>
-        <p>Aujourd'hui, des agents IA m'aident à suivre mon référencement et à préparer mes contenus chaque semaine. Cette formation, c'est tout ce que j'aurais aimé savoir au début — sans le jargon.</p>
-      </div>
+    <div class="wrap narrow about">
+      <p class="eyebrow">Qui suis-je ?</p>
+      <h2>Moi, c'est {SITE.auteur}.</h2>
+      <p>Je ne suis pas développeur. Je suis indépendant, comme vous, et j'ai créé mon propre site en me faisant aider par l'IA : structure, textes, mise en ligne, référencement.</p>
+      <p>Aujourd'hui, des agents IA m'aident à suivre mon référencement et à préparer mes contenus chaque semaine. Cette formation, c'est tout ce que j'aurais aimé savoir au début — sans le jargon.</p>
     </div>
   </section>
 
@@ -199,9 +196,6 @@ const prix = OFFRE.prevente ? OFFRE.prixLancement : OFFRE.prixNormal;
   .mod ul { margin: 0; padding: 0 22px 18px 2.6em; }
   .bonus { margin-top: 24px; background: var(--soft); padding: 16px 20px; border-radius: var(--radius); }
 
-  .about { align-items: center; grid-template-columns: 280px 1fr; }
-  .photo { aspect-ratio: 1; border-radius: 50%; background: #ece7de; display: grid; place-items: center; color: var(--muted); font-weight: 600; }
-
   .price { margin-top: 24px; text-align: left; padding: 32px; border: 2px solid var(--accent); }
   .amount { text-align: center; margin-bottom: 20px; }
   .amount s { color: var(--muted); font-size: 1.3rem; margin-right: 10px; }
@@ -219,9 +213,8 @@ const prix = OFFRE.prevente ? OFFRE.prixLancement : OFFRE.prixNormal;
   .last { align-items: center; }
 
   @media (max-width: 860px) {
-    .hero-in, .two, .about { grid-template-columns: 1fr; }
+    .hero-in, .two { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; }
-    .photo { max-width: 200px; }
     .mock { order: 2; }
   }
 </style>

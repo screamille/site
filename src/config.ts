@@ -2,6 +2,9 @@
 //  TOUT CE QUI EST À PERSONNALISER EST ICI
 // ─────────────────────────────────────────────────────────────
 
+// Préfixe des liens (ex. "/site" sur GitHub Pages, "" sur Vercel ou un vrai domaine)
+export const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 export const SITE = {
   // Nom provisoire : change-le ici, il se met à jour partout
   nom: "Atelier Site IA",
@@ -21,7 +24,8 @@ export const OFFRE = {
   placesLancement: 30,
   garantieJours: 14,
   // Lien de paiement : Stripe Payment Link, Systeme.io, etc.
-  lienPaiement: "#paiement-a-configurer",
+  // ⚠️ Pointe pour l'instant vers une page de simulation (/paiement-test) le temps de brancher un vrai prestataire.
+  lienPaiement: `${BASE}/paiement-test/`,
 };
 
 // Formulaire e-mail (Systeme.io, Brevo, MailerLite…) : colle ici l'URL "action" du formulaire
@@ -102,6 +106,3 @@ export const FAQ = [
     r: "Vous êtes remboursé sur simple e-mail pendant la durée de la garantie, sans justification.",
   },
 ];
-
-// Préfixe des liens (ex. "/site" sur GitHub Pages, "" sur Vercel ou un vrai domaine)
-export const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
