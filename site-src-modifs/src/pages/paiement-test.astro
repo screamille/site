@@ -1,0 +1,51 @@
+---
+import Base from "../layouts/Base.astro";
+import { OFFRE, BASE } from "../config";
+const prix = OFFRE.prevente ? OFFRE.prixLancement : OFFRE.prixNormal;
+---
+<Base title="Commande (test)" noindex>
+  <section>
+    <div class="wrap narrow">
+      <p class="banner">🧪 <strong>Mode test</strong> — cette page simule une commande. Aucun paiement n'est réellement débité tant que le vrai prestataire (Stripe, Systeme.io…) n'est pas branché.</p>
+
+      <h1>Récapitulatif de commande</h1>
+      <div class="card">
+        <div class="row">
+          <span>{OFFRE.nomFormation}</span>
+          <strong>{prix} €</strong>
+        </div>
+        <p class="muted">Paiement unique · accès à vie · garantie {OFFRE.garantieJours} jours</p>
+      </div>
+
+      <form id="fake-checkout" class="card form">
+        <label>
+          Prénom
+          <input type="text" name="prenom" required />
+        </label>
+        <label>
+          E-mail
+          <input type="email" name="email" required />
+        </label>
+        <p class="muted small">Aucune donnée bancaire n'est demandée ici : c'est une simulation, pas un vrai formulaire de paiement.</p>
+        <button type="submit" class="btn btn-big">Valider la commande (simulation)</button>
+      </form>
+    </div>
+  </section>
+</Base>
+
+<script define:vars={{ base: BASE }}>
+  document.getElementById("fake-checkout").addEventListener("submit", (e) => {
+    e.preventDefault();
+    window.location.href = `${base}/merci-achat/`;
+  });
+</script>
+
+<style>
+  .banner { background: #fff7d6; border: 1px dashed #d8b400; border-radius: 10px; padding: 14px 18px; margin-bottom: 32px; }
+  .row { display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; }
+  .muted { color: var(--muted); margin: 10px 0 0; }
+  .small { font-size: .88rem; }
+  .form { margin-top: 20px; display: grid; gap: 16px; }
+  .form label { display: grid; gap: 6px; font-weight: 600; font-size: .95rem; }
+  .btn-big { width: 100%; text-align: center; font-size: 1.1rem; }
+</style>

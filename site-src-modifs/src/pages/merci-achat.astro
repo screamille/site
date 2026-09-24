@@ -1,0 +1,18 @@
+---
+import Base from "../layouts/Base.astro";
+import { OFFRE, BASE } from "../config";
+---
+<Base title="Commande confirmée (test)" noindex>
+  <section>
+    <div class="wrap narrow center">
+      <p class="banner">🧪 Simulation — aucune commande réelle n'a été enregistrée, aucun paiement n'a eu lieu.</p>
+      <h1>Commande reçue ! 🎉</h1>
+      <p class="lead">Dans la vraie version, {OFFRE.nomFormation} et les accès seraient envoyés par e-mail juste après le paiement.</p>
+      <a href={`${BASE}/`} class="btn">Retour à l'accueil</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .banner { background: #fff7d6; border: 1px dashed #d8b400; border-radius: 10px; padding: 14px 18px; margin-bottom: 32px; display: inline-block; }
+</style>
