@@ -1,13 +1,14 @@
 ---
 import Base from "../layouts/Base.astro";
 import { SITE, OFFRE, MODULES } from "../config";
+import { SCRIPTS } from "../data-scripts";
 ---
 <Base title={`Accès à ${OFFRE.nomFormation}`} noindex>
   <section>
     <div class="wrap narrow">
       <p class="eyebrow">Bienvenue</p>
       <h1>{OFFRE.nomFormation}</h1>
-      <p class="lead">Voici les {MODULES.length} modules. Ils sont publiés au fur et à mesure de la prévente — revenez régulièrement.</p>
+      <p class="lead">Voici les {MODULES.length} modules. Les vidéos arrivent au fur et à mesure — en attendant, le texte complet de chaque module est disponible à la lecture ci-dessous.</p>
 
       <div class="modules">
         {MODULES.map((m, i) => (
@@ -15,6 +16,24 @@ import { SITE, OFFRE, MODULES } from "../config";
             <summary><span class="mnum">Module {i + 1}</span><span class="mtitle">{m.titre}</span><span class="mdur">{m.duree}</span></summary>
             <ul>{m.points.map((p) => <li>{p}</li>)}</ul>
             <p class="a-venir">🎬 Vidéo en cours de tournage — disponible prochainement. Vous serez prévenu par e-mail.</p>
+
+            {SCRIPTS[i + 1] && (
+              <details class="script">
+                <summary>📖 Lire le texte complet du module</summary>
+                <div class="script-body">
+                  {SCRIPTS[i + 1].map((sec) => (
+                    <Fragment>
+                      <h3>{sec.titre}</h3>
+                      {sec.lignes.map((l) =>
+                        l.startsWith("§:")
+                          ? <p class="sub">{l.slice(2)}</p>
+                          : <p>{l}</p>
+                      )}
+                    </Fragment>
+                  ))}
+                </div>
+              </details>
+            )}
           </details>
         ))}
       </div>
@@ -34,6 +53,13 @@ import { SITE, OFFRE, MODULES } from "../config";
   .mtitle { font-weight: 700; flex: 1; }
   .mdur { color: var(--muted); font-size: .88rem; white-space: nowrap; }
   .mod ul { margin: 0; padding: 0 22px 0 2.6em; }
-  .a-venir { margin: 0; padding: 10px 22px 18px 22px; color: var(--muted); font-size: .9rem; }
+  .a-venir { margin: 0; padding: 10px 22px 0 22px; color: var(--muted); font-size: .9rem; }
   .muted { color: var(--muted); }
+
+  .script { margin: 14px 22px 18px 22px; border: 1px solid var(--line); border-radius: 10px; background: #fbfaf6; }
+  .script summary { padding: 12px 16px; font-weight: 600; font-size: .92rem; cursor: pointer; }
+  .script-body { padding: 4px 20px 18px 20px; font-size: .92rem; line-height: 1.55; }
+  .script-body h3 { font-size: .82rem; text-transform: uppercase; letter-spacing: .04em; color: var(--accent-dark); margin: 20px 0 8px; }
+  .script-body p { margin: 0 0 10px; }
+  .script-body p.sub { font-weight: 700; margin: 14px 0 6px; }
 </style>
